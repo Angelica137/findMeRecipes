@@ -1,6 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
 
+
+csrf = CSRFProtect()
 db = SQLAlchemy()
 
 def create_app():
@@ -12,3 +15,5 @@ def create_app():
         from . import routes
         # db.create_all()
         return app
+
+

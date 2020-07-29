@@ -14,10 +14,22 @@
     <link rel="stylesheet" href="" />
   </head>
   <body>
-    <h1>Welocome to iCook</h1>
-    <p>Discover and create amazing recipes</p>
-    <h2>Create your fist recipe</h2>
-    <a href="create_recipe"><button type="button">Add recipe</button></a>
+    <h1>{{title}}</h1>
+    <form name="create_recipe" action="" method="POST"></form>
+    {{ form.csrf_token }}
+    <p>
+      {{ form.recipe_name.label }}<br />
+      {{form.recipe_name}}
+    </p>
+    <p>
+      {{form.recipe_description.label}}<br />
+      {{form.recipe_description}}
+    </p>
+    <p>
+      {{form.servings.label}}<br />
+      {{form.servings}}
+    </p>
+    <p>{{ form.submit() }}</p>
 
     <script src="" async defer></script>
   </body>
