@@ -17,6 +17,10 @@
     <h1>{{title}}</h1>
     {{ form.csrf_token }}
     <p>
+      {{form.name.label}}<br />
+      {{form.name}}
+    </p>
+    <p>
       {{form.email.label}}<br />
       {{form.email}}
     </p>
