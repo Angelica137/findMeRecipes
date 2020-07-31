@@ -9,9 +9,11 @@ class User(db.Model):
     email = db.Column(db.String max_length=30, unique=True)
     password = db.Column(db.String)
 
+    @classmethod
     def set_password(self, password):
         self.password = generate_password_hash(self.password, password)
 
+    @classmethod
     def get_password(self, password):
         return check_password_hash(self.password, password)
 
@@ -22,8 +24,10 @@ class Recipe(db.Model):
     recipe_description = db.Column(db.String max_length=30, unique=True)
     ingredient = db.Column(db.String max_length=30, unique=True)
 
+    @classmethod
     def set_password(self, password):
         self.password = generate_password_hash(self.password, password)
 
+    @classmethod
     def get_password(self, password):
         return check_password_hash(self.password, password)
