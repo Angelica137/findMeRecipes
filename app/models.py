@@ -3,11 +3,24 @@ from app import db
 frpm werkzeug.security import generate_apssword_hash, check_password_hash
 
 
-class User(db.Document):
-    user_id = db.IntField(unique=True)
-    name = db.StringField(max_length=50)
-    email = db.StringField(max_length=30, unique=True)
-    password = db.StringField()
+class User(db.Model):
+    user_id = db.Column(db.Integer unique=True)
+    name = db.Column(db.String max_length=50)
+    email = db.Column(db.String max_length=30, unique=True)
+    password = db.Column(db.String)
+
+    def set_password(self, password):
+        self.password = generate_password_hash(self.password, password)
+
+    def get_password(self, password):
+        return check_password_hash(self.password, password)
+
+
+class Recipe(db.Model):
+    recipe_id = db.Column(db.Integer unique=True)
+    recipe_name = db.Column(db.String max_length=50)
+    recipe_description = db.Column(db.String max_length=30, unique=True)
+    ingredient = db.Column(db.String max_length=30, unique=True)
 
     def set_password(self, password):
         self.password = generate_password_hash(self.password, password)
